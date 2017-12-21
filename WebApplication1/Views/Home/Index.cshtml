@@ -1,0 +1,99 @@
+﻿@model WebApplication1.Models.HomeModel
+
+@{
+    ViewBag.Title = "Swachh Enterprises";
+    ViewBag.Count = "Count";
+}
+
+<!--Items Menu-->
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">ITEMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li id="stationaryList" class="active"><a href="#" id="stationary">Stationary</a></li>
+        <li id="houseKeepingList"><a href="#" id="houseKeeping">House Keeping</a></li>
+    </ul>
+</nav>
+
+
+@using (@Html.BeginForm())
+{
+    <!--Menu Items-->
+<div class="container" style="min-width:1280px" id="items">
+    <ul id="stationaryItems" class="list-group">
+        @for (int i = 0; i < @ViewBag.StationaryItems.Length; i++)
+        {
+            //ViewBag.Counter = @ViewBag.StationaryItems[@i]._itemName + "Count";
+            Model.stationaryItems.Add(@ViewBag.StationaryItems[@i]);
+        <li class="list-group-item col-sm-6">
+            <label id="@ViewBag.stationaryItems[@i]._itemName">@ViewBag.stationaryItems[@i]._itemName</label>
+            <label class="pull-right" style="background-color:white">
+                <span class="label label-default">@ViewBag.StationaryItems[@i]._amount</span>
+                @*<button ng-click="@ViewBag.Counter=(@ViewBag.Counter==0)?@ViewBag.Counter:@ViewBag.Counter-1"><span class="glyphicon glyphicon-minus"></span></button>
+            <span id="count" class="badge">{{@ViewBag.Counter}}</span>
+            <button ng-click="@ViewBag.Counter=@ViewBag.Counter+1"><span class="glyphicon glyphicon-plus"></span></button>*@
+            </label>
+            @Html.TextBoxFor(Model => Model.StationaryCount[@i], new { @type = "number", @class = "form-control", @placeholder = "Count", @id = Model.stationaryItems[@i]._itemName })
+        </li>
+            //ViewBag.StationaryItems[@i]._count = ViewBag.Counter.ToString();
+        }
+    </ul>
+    <ul id="houseKeepingItems" class="list-group" style="">
+        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length; i++)
+        {
+            Model.houseKeepingItems.Add(ViewBag.HouseKeepingItems[@i]);
+            //ViewBag.Counter = @ViewBag.HouseKeepingItems[@i]._itemName + "Count";
+        <li class="list-group-item col-sm-6">
+            @ViewBag.HouseKeepingItems[@i]._itemName
+            <label class="pull-right" style="background-color:white">
+                <span class="label label-default">@ViewBag.HouseKeepingItems[@i]._amount</span>
+                @*<button ng-click="@ViewBag.Counter=(@ViewBag.Counter==0)?@ViewBag.Counter:@ViewBag.Counter-1"><span class="glyphicon glyphicon-minus"></span></button>
+            <span id="count" class="badge">{{@ViewBag.Counter}}</span>
+            <button ng-click="@ViewBag.Counter=@ViewBag.Counter+1"><span class="glyphicon glyphicon-plus"></span></button>*@
+            </label>
+            @Html.TextBoxFor(Model => Model.HouseKeepingCount[@i], new { @class = "form-control", @placeholder = "Count", @id = Model.houseKeepingItems[@i]._itemName })
+        </li>
+            //ViewBag.HouseKeepingItems[@i]._count = ViewBag.Counter;
+        }
+    </ul>
+</div>
+
+
+<!--Cancel and Add to Cart Buttons-->
+<div align="right">
+    <input class="btn btn-info" type="button" value="Cancel">
+    <button class="btn btn-info" type="submit" value="Add to Cart">Add to Cart</button> @*onclick="@("window.location.href='" + @Url.Action("Cart", "Home") + "'");" />*@
+</div>
+}
+
+
+<!--<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <input type="file" accept=".feature"/>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>-->

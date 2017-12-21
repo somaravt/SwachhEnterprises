@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+
+<h2>Cart</h2>
+<div class="container">
+<div class="Oredered Stationary Items container" id="Staionary">
+    <h3>Statinary items</h3>
+    <table class="table table-hover">
+        <thead><tr>
+            <th>Item Name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>total</th>
+        </tr></thead>
+    <tbody>
+    @for(int i=0; i<@ViewBag.StationaryItems.Length;i++)
+    {
+    <tr>
+        <td>@ViewBag.StationaryItems[@i]._itemName</td>
+        <td>@ViewBag.StationaryItems[@i]._amount</td>
+        <td>@ViewBag.StationaryItems[@i]._count</td>
+        <td>@(@ViewBag.StationaryItems[@i]._count * @ViewBag.StationaryItems[@i]._amount)</td>
+    </tr>
+    }
+    </tbody>
+    </table>
+</div>
+<div class="Ordered HouseKeeping Items container" id="HouseKeeping">
+    <h3>HouseKeeping Items</h3>
+    <table class="table table-hover table-grey">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Amount</th>
+                <th>Quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length; i++)
+        {
+            <tr>
+                <td>@ViewBag.HouseKeepingItems[@i]._itemName</td>
+                <td>@ViewBag.HouseKeepingItems[@i]._amount</td>
+                <td>@ViewBag.HouseKeepingItems[@i]._count</td>
+                <td>@(@ViewBag.HouseKeepingItems[@i]._count * @ViewBag.HouseKeepingitems[@i]._amount)</td>
+            </tr>
+        }
+        </tbody>
+        </table>
+</div>
+<div class="confirm-order container">
+    <button type="submit" class="btn btn-primary pull-right">Order</button>
+</div>
+</div>
+
