@@ -16,15 +16,21 @@
             <th>total</th>
         </tr></thead>
     <tbody>
-    @for(int i=0; i<@ViewBag.StationaryItems.Length;i++)
+    @for(int i=0; i<@ViewBag.StationaryItems.Count;i++)
     {
     <tr>
         <td>@ViewBag.StationaryItems[@i]._itemName</td>
-        <td>@ViewBag.StationaryItems[@i]._amount</td>
+        <td>&#8377;@ViewBag.StationaryItems[@i]._amount</td>
         <td>@ViewBag.StationaryItems[@i]._count</td>
-        <td>@(@ViewBag.StationaryItems[@i]._count * @ViewBag.StationaryItems[@i]._amount)</td>
+        <td>&#8377;@ViewBag.StationaryItems[@i].QuantitesCost</td>
     </tr>
     }
+    <tr>
+        <td/>
+        <td/>
+        <td>Total Cost</td>
+        <td>&#8377;@ViewBag.StationaryItemsCost</td>
+    </tr>
     </tbody>
     </table>
 </div>
@@ -40,19 +46,26 @@
             </tr>
         </thead>
         <tbody>
-        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length; i++)
+        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Count; i++)
         {
             <tr>
                 <td>@ViewBag.HouseKeepingItems[@i]._itemName</td>
-                <td>@ViewBag.HouseKeepingItems[@i]._amount</td>
+                <td>&#8377;@ViewBag.HouseKeepingItems[@i]._amount</td>
                 <td>@ViewBag.HouseKeepingItems[@i]._count</td>
-                <td>@(@ViewBag.HouseKeepingItems[@i]._count * @ViewBag.HouseKeepingitems[@i]._amount)</td>
+                <td>&#8377;@ViewBag.HouseKeepingItems[@i].QuantitesCost</td>
             </tr>
         }
+        <tr>
+            <td/>
+            <td/>
+            <td>Total Cost</td>
+            <td>&#8377;@ViewBag.HouseKeepingItemsCost</td>
+        </tr>        
         </tbody>
         </table>
 </div>
 <div class="confirm-order container">
+    <label class="pull-right"><strong>Total Cost of All Prodeucts = &#8377;@ViewBag.TotalCost</strong></label>
     <button type="submit" class="btn btn-primary pull-right">Order</button>
 </div>
 </div>

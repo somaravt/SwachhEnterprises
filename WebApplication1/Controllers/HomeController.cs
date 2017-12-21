@@ -12,35 +12,15 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            TempData["stationayItems"] = new StationaryItems[3];
-            TempData["houseKeepingItems"] = new HouseKeepingItems[3];
-
-            
-
             ViewBag.StationaryItems = stationaryItems;
-
             ViewBag.HouseKeepingItems = houseKeepingItems;
             HomeModel homeModel = new HomeModel();
-            homeModel.stationaryItems = new List<StationaryItems>();
-            homeModel.houseKeepingItems = new List<HouseKeepingItems>();
             return View(homeModel);
         }
 
         [HttpPost]
         public ActionResult Index(HomeModel homeModel)
         {
-            //stationaryItems = ViewBag.StationaryItems;
-            //houseKeepingItems = ViewBag.HouseKeepingItems;
-            //Console.WriteLine(stationaryItems);
-            //Console.WriteLine(houseKeepingItems);
-            //for(int Sc=0; Sc<homeModel.StationaryCount.Length;Sc++)
-            //{
-            //    stationaryItems[Sc]._count = homeModel.StationaryCount[Sc];
-            //}
-            //for (int Hc = 0; Hc < homeModel.HouseKeepingCount.Length; Hc++)
-            //{
-            //    stationaryItems[Hc]._count = homeModel.StationaryCount[Hc];
-            //}
             TempData["HomeModel"] = homeModel;
             return RedirectToAction("Cart","Home");
         }
@@ -48,16 +28,27 @@ namespace WebApplication1.Controllers
         public ActionResult Cart()
         {
             HomeModel model = (HomeModel)TempData["HomeModel"];
+            List<StationaryItems> OrderedStationaryItems = new List<StationaryItems>();
+            List<HouseKeepingItems> OrderedHouseKeepingItems = new List<HouseKeepingItems>();
             for (int Sc = 0; Sc < model.StationaryCount.Length; Sc++)
             {
                 stationaryItems[Sc]._count = model.StationaryCount[Sc];
+                stationaryItems[Sc].QuantitesCost = stationaryItems[Sc]._count * stationaryItems[Sc]._amount;
+                if (stationaryItems[Sc]._count != 0)
+                    OrderedStationaryItems.Add(stationaryItems[Sc]);
             }
             for (int Hc = 0; Hc < model.HouseKeepingCount.Length; Hc++)
             {
                 houseKeepingItems[Hc]._count = model.HouseKeepingCount[Hc];
+                houseKeepingItems[Hc].QuantitesCost = houseKeepingItems[Hc]._count * houseKeepingItems[Hc]._amount;
+                if (houseKeepingItems[Hc]._count != 0)
+                    OrderedHouseKeepingItems.Add(houseKeepingItems[Hc]);
             }
-            ViewBag.StationaryItems = stationaryItems;
-            ViewBag.HouseKeepingItems = houseKeepingItems;
+            ViewBag.StationaryItems = OrderedStationaryItems;
+            ViewBag.HouseKeepingItems = OrderedHouseKeepingItems;
+            ViewBag.StationaryItemsCost = CalculateOrderedItemsCost(OrderedStationaryItems);
+            ViewBag.HouseKeepingItemsCost = CalculateOrderedItemsCost(OrderedHouseKeepingItems);
+            ViewBag.TotalCost = ViewBag.StationaryItemsCost + ViewBag.HouseKeepingItemsCost;
             return View();
         }
 

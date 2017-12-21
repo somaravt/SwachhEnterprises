@@ -31,7 +31,7 @@
     </script>
 
 </head>
-<body ng-app="" >@*style="overflow-x:hidden">*@
+<body ng-app="" style="overflow-x:hidden">
 <div class="container">
     <!--Header-->
     <header style="background-color:#e5e5e5">
@@ -45,21 +45,24 @@
             </div>
         </div>
     </header>
+    <br>
 
         @RenderBody()
 
     <!--Address-->
-    <footer style="background-color:#e5e5e5;min-width:1280px">
-        <div class="container" align="center">
+    @*<footer style="background-color:#e5e5e5;min-width:1280px">
+        <div class="row" align="center">
+            <div class="col-sm-9">
             Contact Us:<br>
             Kranthi nagar Colony,
             Doctors Colony, <br>
             Saroornagar,
             Hyderabad, <br>
             Telangana 500035
+                </div>
         </div>
 
-    </footer>
+    </footer>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

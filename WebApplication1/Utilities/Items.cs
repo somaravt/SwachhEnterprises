@@ -13,6 +13,10 @@ namespace WebApplication1.Utilities
 
         public HouseKeepingItems[] houseKeepingItems;
 
+        public int CostOfOrderedStationaryItems;
+
+        public int CostOfOrderedHouseKeepingItems;
+
         public Items()
         {
             stationaryItems = new StationaryItems[3];
@@ -24,6 +28,21 @@ namespace WebApplication1.Utilities
             houseKeepingItems[0] = new HouseKeepingItems("1", "HItem1", 100);
             houseKeepingItems[1] = new HouseKeepingItems("2", "HItem2", 100);
             houseKeepingItems[2] = new HouseKeepingItems("3", "HItem3", 100);
+        }
+
+        public int CalculateOrderedItemsCost(List<StationaryItems> items)
+        {
+            int cost = 0;
+            foreach (StationaryItems item in items)
+                cost += item.QuantitesCost;
+            return cost;
+        }
+        public int CalculateOrderedItemsCost(List<HouseKeepingItems> items)
+        {
+            int cost = 0;
+            foreach (HouseKeepingItems item in items)
+                cost += item.QuantitesCost;
+            return cost;
         }
     }
 }

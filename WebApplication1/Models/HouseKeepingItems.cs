@@ -15,6 +15,8 @@ namespace WebApplication1.Models
 
         public int _count { get; set; }
 
+        public int QuantitesCost { get; set; }
+
         public HouseKeepingItems(string id,string itemName,int amount)
         {
             _id = id;
