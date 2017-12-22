@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwachhEnterprises.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -49,6 +50,17 @@ namespace WebApplication1.Controllers
             ViewBag.StationaryItemsCost = CalculateOrderedItemsCost(OrderedStationaryItems);
             ViewBag.HouseKeepingItemsCost = CalculateOrderedItemsCost(OrderedHouseKeepingItems);
             ViewBag.TotalCost = ViewBag.StationaryItemsCost + ViewBag.HouseKeepingItemsCost;
+            TempData["StationaryItems"] = OrderedStationaryItems;
+            TempData["HouseKeepingItems"] = OrderedHouseKeepingItems;
+            TempData["TotalCost"] = ViewBag.TotalCost;
+            return View();
+        }
+        
+        public ActionResult Order()
+        {
+            OrderedItems Oi = new OrderedItems((List<StationaryItems>)TempData["StationaryItems"],(List<HouseKeepingItems>)TempData["HouseKeepingItems"],(int)TempData["TotalCost"]);
+            Oi.GenerateInvoice(Oi);
+            Oi.SendInvoice("Example.pdf");
             return View();
         }
 

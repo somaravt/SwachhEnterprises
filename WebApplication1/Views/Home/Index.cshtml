@@ -22,43 +22,41 @@
     <!--Menu Items-->
 <div class="container" style="min-width:1280px" id="items">
     <div id="stationaryItems" class="list-group">
-        
+
         @for (int i = 0; i < @ViewBag.StationaryItems.Length;)
         {
             <div class="row container">
-            @for (int j = 0; j < 3 && i < @ViewBag.StationaryItems.Length; j++,i++)
-            {
-                //Model.stationaryItems.Add(@ViewBag.StationaryItems[@i]);
-                <div class="StationaryItem col-sm-4">
-                    <div id="StationaryItemName"><strong>@ViewBag.StationaryItems[@i]._itemName</strong></div>
-                    <div class="StationaryItemAmount">PRICE - &#8377;@ViewBag.StationaryItems[@i]._amount</div>
-                    @Html.TextBoxFor(Model => Model.StationaryCount[@i], new { @type = "number", @class = "form-control", @placeholder = "Count", @id = @ViewBag.StationaryItems[@i]._itemName })
-                </div>
-            }
+                @for (int j = 0; j < 3 && i < @ViewBag.StationaryItems.Length; j++, i++)
+                {
+                    //Model.stationaryItems.Add(@ViewBag.StationaryItems[@i]);
+                    <div class="StationaryItem col-sm-4">
+                        <div id="StationaryItemName"><strong>@ViewBag.StationaryItems[@i]._itemName</strong></div>
+                        <div class="StationaryItemAmount">PRICE - &#8377;@ViewBag.StationaryItems[@i]._amount</div>
+                        @Html.TextBoxFor(Model => Model.StationaryCount[@i], new { @type = "number", @class = "form-control", @placeholder = "Count", @id = @ViewBag.StationaryItems[@i]._itemName })
+                    </div>
+                }
             </div>
         }
     </div>
     <div id="houseKeepingItems" class="list-group" style="">
-
-        
-        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length;)
-        {
-            <div class="row container">
-            @for (int j = 0; j < 3 && i < @ViewBag.HouseKeepingItems.Length; j++,i++)
+            @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length;)
             {
-                //Model.houseKeepingItems.Add(ViewBag.HouseKeepingItems[@i]);
-                //ViewBag.Counter = @ViewBag.HouseKeepingItems[@i]._itemName + "Count";
-                <div class="HouseKeepingItem col-sm-4">    
-                    <div id="HouseKeepingItemName"><strong>@ViewBag.HouseKeepingItems[@i]._itemName</strong></div>
-                    <div class="HouseKeepingItemAmount">PRICE - &#8377;@ViewBag.HouseKeepingItems[@i]._amount</div>
-                    @Html.TextBoxFor(Model => Model.HouseKeepingCount[@i], new { @class = "form-control", @placeholder = "Count", @id = @ViewBag.HouseKeepingItems[@i]._itemName })
+                <div class="row container">
+                    @for (int j = 0; j < 3 && i < @ViewBag.HouseKeepingItems.Length; j++, i++)
+                    {
+                        //Model.houseKeepingItems.Add(ViewBag.HouseKeepingItems[@i]);
+                        //ViewBag.Counter = @ViewBag.HouseKeepingItems[@i]._itemName + "Count";
+                        <div class="HouseKeepingItem col-sm-4">
+                            <div id="HouseKeepingItemName"><strong>@ViewBag.HouseKeepingItems[@i]._itemName</strong></div>
+                            <div class="HouseKeepingItemAmount">PRICE - &#8377;@ViewBag.HouseKeepingItems[@i]._amount</div>
+                            @Html.TextBoxFor(Model => Model.HouseKeepingCount[@i], new { @class = "form-control", @placeholder = "Count", @id = @ViewBag.HouseKeepingItems[@i]._itemName })
+                        </div>
+                    }
                 </div>
             }
-            </div>
-        }
-    </div>
-    
-</div>
+     </div>
+
+ </div>
 
 
 <!--Cancel and Add to Cart Buttons-->
