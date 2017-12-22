@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
             OrderedItems Oi = new OrderedItems((List<StationaryItems>)TempData["StationaryItems"],(List<HouseKeepingItems>)TempData["HouseKeepingItems"],(int)TempData["TotalCost"]);
             Oi.GenerateInvoice(Oi);
             Oi.SendInvoice("Example.pdf");
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

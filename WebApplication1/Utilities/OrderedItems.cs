@@ -101,7 +101,7 @@ namespace SwachhEnterprises.Utilities
         //Creating PDF file
         public void CreateAPDFFile(byte[] content)
         {
-            using (FileStream fs = File.Create(Directory.GetCurrentDirectory()+"//Files//OrdersInvoice//Example.pdf"))
+            using (FileStream fs = File.Create("C:\\Temp\\Example.pdf"))
             {
                 fs.Write(content,0,(int)content.Length);
             }
@@ -116,7 +116,7 @@ namespace SwachhEnterprises.Utilities
             mail.Subject = "Order from Raviteja";
             String Body = "Hi,\n\t This is Raviteja Soma. I have ordered some of the products from your website and request to deliver them as early as possible.";
             mail.Body = Body;
-            mail.Attachments.Add(new Attachment(Directory.GetCurrentDirectory() + "//Files//OrdersInvoice//"+InvoiceName));
+            mail.Attachments.Add(new Attachment("C:\\Temp\\"+InvoiceName));
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;

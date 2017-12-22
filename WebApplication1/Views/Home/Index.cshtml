@@ -14,6 +14,9 @@
         <li id="stationaryList" class="active"><a href="#" id="stationary">Stationary</a></li>
         <li id="houseKeepingList"><a href="#" id="houseKeeping">House Keeping</a></li>
     </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li><span class="glyphicon glyphicon-user"></span></li>
+    </ul>
 </nav>
 
 
@@ -21,6 +24,8 @@
 {
     <!--Menu Items-->
 <div class="container" style="min-width:1280px" id="items">
+
+    <!--Stationary items-->
     <div id="stationaryItems" class="list-group">
 
         @for (int i = 0; i < @ViewBag.StationaryItems.Length;)
@@ -38,6 +43,8 @@
             </div>
         }
     </div>
+
+    <!--House Keeping Items-->
     <div id="houseKeepingItems" class="list-group" style="">
             @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length;)
             {
