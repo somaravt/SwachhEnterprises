@@ -145,12 +145,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientsInfo\ClientsInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsInfo\AddProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\HouseKeepingItems.cs" />
+    <Compile Include="Models\ProductInfo.cs" />
     <Compile Include="Models\StationaryItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Items.cs" />
@@ -196,10 +199,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\ClientsInfo\ClientsInfo.cshtml" />
+    <Content Include="Views\ProductsInfo\AddProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\OrdersInvoice\" />
+    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

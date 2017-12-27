@@ -1,0 +1,44 @@
+﻿@using SwachhEnterprises.Models
+@model SwachhEnterprises.Models.ProductInfo
+
+@{
+    ViewBag.Title = "AddProducts";
+}
+
+<h2>AddProduct</h2>
+
+@using (Html.BeginForm())
+{
+    <div id="ProductInfoForm" class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                Product Name:
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(Model => Model.ProductName, new { @placeholder="Product Name", @class="form-control", @id="AddProductName"  });
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                Product Category:
+            </div>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(Model => Model.ProductCategory,new SelectList(Enum.GetValues(typeof(Category))),"Select Category", new { @class = "form-control", @id = "AddProductCategory" });
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                Product Image:
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBox("file", "", new { @type = "file", @class = "form-control" });
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <input class="form-control" type="submit" value="Add Product" />
+            </div>
+        </div>
+    </div>
+}
+

@@ -27,6 +27,7 @@ namespace SwachhEnterprises.Utilities
             count = 0;
         }
 
+        //Generate Invoice
         public bool GenerateInvoice(OrderedItems items)
         {
             Document OrderInvoice = new Document(PageSize.A4,25,10,25,10);
@@ -107,6 +108,8 @@ namespace SwachhEnterprises.Utilities
             }
         }
 
+
+        //Send Invoice
         public void SendInvoice(string InvoiceName)
         {
             MailMessage mail = new MailMessage();
