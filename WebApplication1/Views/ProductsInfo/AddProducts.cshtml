@@ -1,5 +1,5 @@
-﻿@using SwachhEnterprises.Models
-@model SwachhEnterprises.Models.ProductInfo
+﻿@using WebApplication1.Models
+@model WebApplication1.Models.ProductInfo
 
 @{
     ViewBag.Title = "AddProducts";
@@ -7,38 +7,56 @@
 
 <h2>AddProduct</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddProducts","ProductsInfo",FormMethod.Post,new { enctype = "multipart/form-data" }))
 {
     <div id="ProductInfoForm" class="container">
+        
+        <!-- Product Name TextBox -->       
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 Product Name:
             </div>
-            <div class="col-sm-6">
-                @Html.TextBoxFor(Model => Model.ProductName, new { @placeholder="Product Name", @class="form-control", @id="AddProductName"  });
+            <div class="col-sm-4">
+                @Html.TextBoxFor(Model => Model.ProductName, new { @placeholder="Product Name", @class="form-control", @id="AddProductName"  })
             </div>
         </div>
+        <br/>
+
+        <!-- Product Category DropDown -->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 Product Category:
             </div>
-            <div class="col-sm-6">
-                @Html.DropDownListFor(Model => Model.ProductCategory,new SelectList(Enum.GetValues(typeof(Category))),"Select Category", new { @class = "form-control", @id = "AddProductCategory" });
+            <div class="col-sm-4">
+                @Html.DropDownListFor(Model => Model.ProductCategory,new SelectList(Enum.GetValues(typeof(Category))), new { @class = "form-control", @placeholder="Select Category", @id = "AddProductCategory" })
             </div>
         </div>
+        <br />
+
+        <!-- Product Image Upload Button -->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 Product Image:
             </div>
-            <div class="col-sm-6">
-                @Html.TextBox("file", "", new { @type = "file", @class = "form-control" });
+            <div class="col-sm-4">
+                @Html.TextBoxFor(Model=>Model.ProductImage, new { @type = "file", @class = "form-control" });
             </div>
         </div>
+        <br />
+
+        <!-- Add Product Button -->
         <div class="row">
-            <div class="col-sm-12">
-                <input class="form-control" type="submit" value="Add Product" />
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <button class="form-control" type="submit" value="Add Product">Add Product</button>
             </div>
         </div>
+        
+        <!-- Message -->
+        <div id="Message" class="row container">
+            <div align="center" class="panel panel-default col-sm-4">@TempData["Message"]</div>
+        </div>
+
     </div>
 }
 

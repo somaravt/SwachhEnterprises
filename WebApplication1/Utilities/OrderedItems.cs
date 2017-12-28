@@ -8,7 +8,7 @@ using System.Net.Mail;
 using System.Web;
 using WebApplication1.Models;
 
-namespace SwachhEnterprises.Utilities
+namespace WebApplication1.Utilities
 {
     public class OrderedItems
     {
