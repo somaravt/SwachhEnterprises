@@ -19,10 +19,23 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult AddProducts(ProductInfo Product)
         {
-            Product.Add(Product);
-            Product.CreateImage(Product);
-            TempData["Message"] = "Product Added Successfully";
-            return RedirectToAction("AddProducts");
+            int value = Product.Add(Product);
+            //Product.CreateImage(Product);
+            if (value == 1)
+            {
+                TempData["Message"] = "Product Added Successfully";
+                return RedirectToAction("AddProducts");
+            }
+            else if (value == 0)
+            {
+                TempData["Message"] = "Error while Inserting the Product";
+                return View();
+            }
+            else
+            {
+                TempData["Message"] = "Error while Adding Product Image";
+                return View();
+            }
         }
     }
 }
