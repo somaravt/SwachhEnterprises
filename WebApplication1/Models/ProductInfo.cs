@@ -68,7 +68,7 @@ namespace WebApplication1.Models
 
     public enum Category
     {
-        StationaryItem,
-        HouseKeepingItem
+        Stationary,
+        HouseKeeping
     }
 }
