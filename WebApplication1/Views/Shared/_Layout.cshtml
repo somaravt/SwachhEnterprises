@@ -33,9 +33,8 @@
 
 </head>
 <body ng-app="" style="overflow-x:hidden">
-<div class="container">
     <!--Header-->
-    <header style="background-color:#e5e5e5">
+    <header class="container" style="background-color:#e5e5e5">
         <div class="row">
             <div class="col-sm-4">
                 <img class="img-rounded" align="right" src="~/Files/Images/SwachhEnterprises.jpeg" alt="logo" width="120" height="90">
@@ -46,28 +45,64 @@
             </div>
         </div>
     </header>
-    <br>
 
+    <div class="container">
+        <br>
+        <!--Carousel-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!--Wrapper for slides-->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Files/Images/SwachhEnterprises.jpeg" alt="HouseKeeping" style="width:100%;height:40%" />
+                </div>
+                <div class="item">
+                    <img src="~/Files/Images/SwachhEnterprises.jpeg" alt="HouseKeeping" style="width:100%;height:40%" />
+                </div>
+
+                <div class="item">
+                    <img src="~/Files/Images/SwachhEnterprises.jpeg" alt="HouseKeeping" style="width:100%;height:40%" />
+                </div>
+            </div>
+
+            <!--Left Arrow-->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previus</span>
+            </a>
+
+            <!--Right Arrow-->
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
         @RenderBody()
 
-    <!--Address-->
-    @*<footer style="background-color:#e5e5e5;min-width:1280px">
-        <div class="row" align="center">
-            <div class="col-sm-9">
-            Contact Us:<br>
-            Kranthi nagar Colony,
-            Doctors Colony, <br>
-            Saroornagar,
-            Hyderabad, <br>
-            Telangana 500035
+        <!--Address-->
+        @*<footer style="background-color:#e5e5e5;min-width:1280px">
+                <div class="row" align="center">
+                    <div class="col-sm-9">
+                    Contact Us:<br>
+                    Kranthi nagar Colony,
+                    Doctors Colony, <br>
+                    Saroornagar,
+                    Hyderabad, <br>
+                    Telangana 500035
+                        </div>
                 </div>
-        </div>
 
-    </footer>*@
+            </footer>*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</div>    
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </div>
 </body>
 </html>
