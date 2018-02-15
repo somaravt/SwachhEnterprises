@@ -14,6 +14,9 @@
         <li id="stationaryList" class="active"><a href="#" id="stationary">Stationary</a></li>
         <li id="houseKeepingList"><a href="#" id="houseKeeping">House Keeping</a></li>
     </ul>
+    @*<ul class="nav navbar-nav pull-right">
+        <li><span class="glyphicon glyphicon-user"></span></li>
+    </ul>*@
 </nav>
 
 
@@ -21,43 +24,48 @@
 {
     <!--Menu Items-->
 <div class="container" style="min-width:1280px" id="items">
-    <ul id="stationaryItems" class="list-group">
-        @for (int i = 0; i < @ViewBag.StationaryItems.Length; i++)
+
+    <!--Stationary items-->
+    <div id="stationaryItems" class="list-group">
+
+        @for (int i = 0; i < @ViewBag.StationaryItems.Count;)
         {
-            //ViewBag.Counter = @ViewBag.StationaryItems[@i]._itemName + "Count";
-            Model.stationaryItems.Add(@ViewBag.StationaryItems[@i]);
-        <li class="list-group-item col-sm-6">
-            <label id="@ViewBag.stationaryItems[@i]._itemName">@ViewBag.stationaryItems[@i]._itemName</label>
-            <label class="pull-right" style="background-color:white">
-                <span class="label label-default">@ViewBag.StationaryItems[@i]._amount</span>
-                @*<button ng-click="@ViewBag.Counter=(@ViewBag.Counter==0)?@ViewBag.Counter:@ViewBag.Counter-1"><span class="glyphicon glyphicon-minus"></span></button>
-            <span id="count" class="badge">{{@ViewBag.Counter}}</span>
-            <button ng-click="@ViewBag.Counter=@ViewBag.Counter+1"><span class="glyphicon glyphicon-plus"></span></button>*@
-            </label>
-            @Html.TextBoxFor(Model => Model.StationaryCount[@i], new { @type = "number", @class = "form-control", @placeholder = "Count", @id = Model.stationaryItems[@i]._itemName })
-        </li>
-            //ViewBag.StationaryItems[@i]._count = ViewBag.Counter.ToString();
+            <div class="row container">
+                @for (int j = 0; j < 3 && i < @ViewBag.StationaryItems.Count; j++, i++)
+                {
+                    //Model.stationaryItems.Add(@ViewBag.StationaryItems[@i]);
+                    <div class="StationaryItem col-sm-4">
+                        <div id="StationaryProductImage"><img src="@ViewBag.StationaryItems[@i]._image" style="height:180px;width:270px;"/></div>
+                        <div id="StationaryItemName"><strong>@ViewBag.StationaryItems[@i]._itemName</strong></div>
+                        <div class="StationaryItemAmount">PRICE - &#8377;@ViewBag.StationaryItems[@i]._amount</div>
+                        @Html.TextBoxFor(Model => Model.StationaryCount[@i], new { @type = "number", @class = "form-control", @placeholder = "Count", @id = @ViewBag.StationaryItems[@i]._itemName })
+                    </div>
+                }
+            </div>
         }
-    </ul>
-    <ul id="houseKeepingItems" class="list-group" style="">
-        @for (int i = 0; i < @ViewBag.HouseKeepingItems.Length; i++)
-        {
-            Model.houseKeepingItems.Add(ViewBag.HouseKeepingItems[@i]);
-            //ViewBag.Counter = @ViewBag.HouseKeepingItems[@i]._itemName + "Count";
-        <li class="list-group-item col-sm-6">
-            @ViewBag.HouseKeepingItems[@i]._itemName
-            <label class="pull-right" style="background-color:white">
-                <span class="label label-default">@ViewBag.HouseKeepingItems[@i]._amount</span>
-                @*<button ng-click="@ViewBag.Counter=(@ViewBag.Counter==0)?@ViewBag.Counter:@ViewBag.Counter-1"><span class="glyphicon glyphicon-minus"></span></button>
-            <span id="count" class="badge">{{@ViewBag.Counter}}</span>
-            <button ng-click="@ViewBag.Counter=@ViewBag.Counter+1"><span class="glyphicon glyphicon-plus"></span></button>*@
-            </label>
-            @Html.TextBoxFor(Model => Model.HouseKeepingCount[@i], new { @class = "form-control", @placeholder = "Count", @id = Model.houseKeepingItems[@i]._itemName })
-        </li>
-            //ViewBag.HouseKeepingItems[@i]._count = ViewBag.Counter;
-        }
-    </ul>
-</div>
+    </div>
+
+    <!--House Keeping Items-->
+    <div id="houseKeepingItems" class="list-group" style="">
+            @for (int i = 0; i < @ViewBag.HouseKeepingItems.Count;)
+            {
+                <div class="row container">
+                    @for (int j = 0; j < 3 && i < @ViewBag.HouseKeepingItems.Count; j++, i++)
+                    {
+                        //Model.houseKeepingItems.Add(ViewBag.HouseKeepingItems[@i]);
+                        //ViewBag.Counter = @ViewBag.HouseKeepingItems[@i]._itemName + "Count";
+                    <div class="HouseKeepingItem col-sm-4">
+                        <div id="HouseKeepingProductImage"><img src="@ViewBag.HouseKeepingItems[@i]._image" style="height:180px;width:270px;" /></div>
+                        <div id="HouseKeepingItemName"><strong>@ViewBag.HouseKeepingItems[@i]._itemName</strong></div>
+                        <div class="HouseKeepingItemAmount">PRICE - &#8377;@ViewBag.HouseKeepingItems[@i]._amount</div>
+                        @Html.TextBoxFor(Model => Model.HouseKeepingCount[@i], new { @class = "form-control", @placeholder = "Count", @id = @ViewBag.HouseKeepingItems[@i]._itemName })
+                    </div>
+                    }
+                </div>
+            }
+     </div>
+
+ </div>
 
 
 <!--Cancel and Add to Cart Buttons-->

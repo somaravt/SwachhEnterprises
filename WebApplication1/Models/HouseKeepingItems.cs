@@ -13,7 +13,13 @@ namespace WebApplication1.Models
 
         public int _amount { get; set; }
 
+        public string _image { get; set; }
+
+        public string _description { get; set; }
+
         public int _count { get; set; }
+
+        public int QuantitesCost { get; set; }
 
         public HouseKeepingItems(string id,string itemName,int amount)
         {
