@@ -30,11 +30,32 @@
         
 	});
     </script>
+    <script>
+        window.onscroll = function () { myFunction() };
 
+        function myFunction() {
+            var header = document.getElementById("myHeader");
+            var sticky = header.offsetTop;
+            if (window.pageYOffset >= sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+    </script>
+    <style>
+        #myHeader {
+            position: fixed;
+            top: 0px;
+            width: 96%;
+            left:2%;
+            z-index:10;
+        }
+    </style>
 </head>
 <body ng-app="" style="overflow-x:hidden">
     <!--Header-->
-    <header class="container" style="background-color:#e5e5e5">
+    <div id="myHeader" class="container" style="background-color:#e5e5e5">
         <div class="row">
             <div class="col-sm-4">
                 <img class="img-rounded" align="right" src="~/Files/Images/SwachhEnterprises.jpeg" alt="logo" width="120" height="90">
@@ -44,9 +65,8 @@
                 <p align="center"><strong><sub style="color:#30A763">Cleanliness at your doorstep</sub></strong></p>
             </div>
         </div>
-    </header>
-
-    <div class="container">
+    </div>
+    <div class="container" style="margin-top:100px;position:relative;z-index:1;">
         <br>
         <!--Carousel-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
